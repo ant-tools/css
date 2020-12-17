@@ -1,0 +1,10 @@
+package ${packageRoot}.service;
+
+import js.annotation.Remote;
+import ${packageRoot}.model.Model;
+
+@Remote
+public interface Service
+{
+  Model getModel(int modelId);
+}

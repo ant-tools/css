@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="${projectName}" default="deploy">
+	<property name="WAR" value="${warName}" />
+
+	<property name="RUNTIME-WEBAPPS" value="${runtimePath}/webapps" />
+	<property name="BIN" value="bin" />
+	<property name="STATIC-CONTENT" value="res/layout" />
+	<property name="CONF" value="conf" />
+	<property name="LIBS" value="libs" />
+	<property name="BUILD" value="build" />
+
+	<target name="deploy">
+		<jar destfile="$${WAR}">
+			<zipfileset dir="$${STATIC-CONTENT}" includes="**/*" />
+			<zipfileset dir="$${CONF}" includes="web.xml" prefix="WEB-INF" />
+			<zipfileset dir="$${CONF}" includes="app.xml" prefix="WEB-INF" />
+			<zipfileset dir="$${BIN}" includes="**/*" excludes="**/*.js" prefix="WEB-INF/classes" />
+			<zipfileset dir="$${LIBS}" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="$${CONF}" includes="app-descriptor.xml" prefix="WEB-INF/classes" />
+			<zipfileset dir="$${CONF}" includes="log4j.properties" prefix="WEB-INF/classes" />
+			<zipfileset dir="$${BIN}" includes="**/*.js" prefix="js" />
+			<zipfileset dir="$${LIBS}" includes="*.js" prefix="js" />
+		</jar>
+		<copy file="${WAR}" todir="$${RUNTIME-WEBAPPS}" />
+	</target>
+
+	<target name="build">
+		<jar destfile="${BUILD}/$${WAR}">
+			<zipfileset dir="$${CONF}" includes="web.xml" prefix="WEB-INF" />
+			<zipfileset dir="$${CONF}" includes="app.xml" prefix="WEB-INF" />
+			<zipfileset dir="$${BIN}" includes="**/*" excludes="**/*.js" prefix="WEB-INF/classes" />
+			<zipfileset dir="$${LIBS}" includes="*.jar" prefix="WEB-INF/lib" />
+			<zipfileset dir="$${CONF}" includes="app-descriptor.xml" prefix="WEB-INF/classes" />
+			<zipfileset dir="$${CONF}" includes="log4j.properties" prefix="WEB-INF/classes" />
+		</jar>
+		<copy todir="$${BUILD}/context" overwrite="true">
+			<fileset dir="$${STATIC-CONTENT}">
+				<exclude name="**/.svn" />
+			</fileset>
+		</copy>
+		<copy todir="$${BUILD}/context/js" overwrite="true">
+			<fileset dir="$${BIN}" includes="**/*.js" />
+			<fileset dir="$${LIBS}" includes="*.js" />
+		</copy>
+	</target>
+</project>

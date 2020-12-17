@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<app>
+		<login-form href="login-form.xsp" />
+	</app>
+	<managed-classes>
+		<dao interface="${packageRoot}.dao.Dao" implementation="${packageRoot}.dao.DaoImpl" type="POJO" scope="APPLICATION" />
+		<service interface="${packageRoot}.service.Service" implementation="${packageRoot}.service.ServiceImpl" type="POJO" scope="APPLICATION" />
+	</managed-classes>
+</config>

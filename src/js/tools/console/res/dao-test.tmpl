@@ -1,0 +1,24 @@
+package ${packageRoot}.test;
+
+import js.core.Factory;
+import junit.framework.TestCase;
+import ${classUnderTestQualifiedName};
+import ${packageRoot}.model.Model;
+
+public class ${className} extends TestCase
+{
+  private ${classUnderTestName} dao;
+
+  @Override
+  protected void setUp() throws Exception
+  {
+    dao = Factory.getInstance(${classUnderTestName}.class);
+  }
+
+  public void testGetModel()
+  {
+    int modelId = 1;
+    Model model = dao.getModel(modelId);
+    assertNotNull(model);
+  }
+}

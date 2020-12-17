@@ -1,0 +1,24 @@
+package ${packageRoot}.test;
+
+import js.core.Factory;
+import junit.framework.TestCase;
+import ${packageRoot}.model.Model;
+import ${packageRoot}.service.Service;
+
+public class ServiceUnitTests extends TestCase
+{
+  private Service service;
+
+  @Override
+  protected void setUp() throws Exception
+  {
+    service = Factory.getInstance(Service.class);
+  }
+
+  public void testGetModel()
+  {
+    int modelId = 1;
+    Model model = service.getModel(modelId);
+    assertNotNull(model);
+  }
+}

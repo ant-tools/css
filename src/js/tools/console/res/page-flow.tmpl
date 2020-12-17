@@ -1,0 +1,37 @@
+package ro.phoenix.blog;
+
+import js.annotation.Public;
+import js.annotation.Remote;
+import js.core.Factory;
+import js.web.Context;
+import js.web.Resource;
+import js.web.view.View;
+import ro.phoenix.blog.model.Login;
+
+@Remote
+public class PageFlow
+{
+  @Public
+  public View loginForm()
+  {
+    return Factory.getView("login-form");
+  }
+
+  @Public
+  public Resource login(Login login)
+  {
+    if(login.getAccount().equals("admin") && login.getPassword().equals("admin")) {
+      Context context = Factory.getInstance(Context.class);
+      context.grantPrivileges();
+      return index();
+    }
+    else {
+      return loginForm();
+    }
+  }
+
+  public View index()
+  {
+    return Factory.getView("index");
+  }
+}

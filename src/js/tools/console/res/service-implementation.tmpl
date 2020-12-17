@@ -1,0 +1,17 @@
+package ${packageRoot}.service;
+
+import js.annotation.DependencyInjection;
+import ${packageRoot}.dao.Dao;
+import ${packageRoot}.model.Model;
+
+public class ServiceImpl implements Service
+{
+  @DependencyInjection
+  private Dao dao;
+
+  @Override
+  public Model getModel(int modelId)
+  {
+    return dao.getModel(modelId);
+  }
+}

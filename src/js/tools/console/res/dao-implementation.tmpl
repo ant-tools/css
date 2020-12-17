@@ -1,0 +1,17 @@
+package ${packageRoot}.dao;
+
+import js.annotation.DependencyInjection;
+import js.db.SessionManager;
+import ${packageRoot}.model.Model;
+
+final class ${className} implements ${superClassName}
+{
+  @DependencyInjection
+  private SessionManager sm;
+
+  @Override
+  public Model getModel(int modelId)
+  {
+    return sm.get(Model.class, modelId);
+  }
+}

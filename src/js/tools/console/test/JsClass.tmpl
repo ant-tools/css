@@ -1,0 +1,32 @@
+$package('${packageName}');
+
+/**
+ * Class description.
+ * 
+ * @author ${authorName}
+ * @since ${version}
+ *
+ * @constructor
+ * Constructor description.
+ */
+${qualifiedClassName} = function() {
+};
+
+${qualifiedClassName}.prototype = {
+	/**
+	 * Returns class string representation.
+	 * 
+	 * @return String class string representation.
+	 */
+	toString: function() {
+		return '${qualifiedClassName}';
+	},
+	
+	/**
+	 * Clean-up instance resources.
+	 */	
+	finalize: function() {
+		this.$super('finalize');
+	}
+};
+$extends(${qualifiedClassName}, js.lang.Object);
